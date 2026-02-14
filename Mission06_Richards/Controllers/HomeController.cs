@@ -11,7 +11,7 @@ namespace Mission06_Richards.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult GetToKnowJoel()
         {
             return View();
         }
