@@ -5,31 +5,34 @@
     {
         public class Movie
         {
-            [Key]
-            public int MovieID { get; set; }
-            public int? CategoryID { get; set; }
-            public Category Category { get; set; }
+        [Key]
+        public int MovieID { get; set; }
 
-            [Required]
-            public string? Title { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
+        public int CategoryID { get; set; }
 
-            [Required]
-            [Range(1888, int.MaxValue, ErrorMessage = "Year must be 1888 or later.")]
-            public int Year { get; set; }
+        public Category? Category { get; set; }
 
-            public string? Director { get; set; }
+        [Required]
+        public string? Title { get; set; }
 
-            public string? Rating { get; set; }
+        [Required]
+        [Range(1888, int.MaxValue, ErrorMessage = "Year must be 1888 or later.")]
+        public int Year { get; set; }
 
-            [Required]
-            public bool Edited { get; set; }
+        public string? Director { get; set; }
 
-            [Required]
-            public bool CopiedToPlex { get; set; }
+        public string? Rating { get; set; }
 
-            public string? LentTo { get; set; }
+        [Required]
+        public bool Edited { get; set; }
 
-            [StringLength(25)]
-            public string? Notes { get; set; }
-        }
+        [Required]
+        public bool CopiedToPlex { get; set; }
+
+        public string? LentTo { get; set; }
+
+        [StringLength(25)]
+        public string? Notes { get; set; }
+    }
     }
