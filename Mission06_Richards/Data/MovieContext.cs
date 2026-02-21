@@ -12,5 +12,6 @@ namespace Mission06_Richards.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

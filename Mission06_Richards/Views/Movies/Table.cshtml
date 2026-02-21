@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Mission06_Richards.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movie List";
+}
+
+<h2 class="mb-4">Movie Collection</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Copied To Plex</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Category?.CategoryName</td>
+                <td>@movie.Title</td>
+                <td>@movie.Year</td>
+                <td>@movie.Director</td>
+                <td>@movie.Rating</td>
+                <td>@(movie.Edited ? "Yes" : "No")</td>
+                <td>@(movie.CopiedToPlex ? "Yes" : "No")</td>
+                <td>@movie.LentTo</td>
+                <td>@movie.Notes</td>
+
+                <td>
+                    <!-- Edit Button -->
+                    <a asp-action="Edit"
+                       asp-route-id="@movie.MovieID"
+                       class="btn btn-sm btn-primary">
+                        Edit
+                    </a>
+
+                    <!-- Delete Button -->
+                    <a asp-action="Delete"
+                       asp-route-id="@movie.MovieID"
+                       class="btn btn-sm btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
