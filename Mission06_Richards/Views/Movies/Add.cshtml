@@ -1,54 +1,85 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model Mission06_Richards.Models.Movie
+﻿@model Mission06_Richards.Models.Movie
 
 <h2>Add a Movie</h2>
 
 <form asp-action="Add" method="post">
 
-    <label>Category:</label>
-    <input asp-for="CategoryID" required />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Category Dropdown -->
+    <div>
+        <label asp-for="CategoryID"></label>
+        <select asp-for="CategoryID"
+                asp-items="@(new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"))">
+            <option value="0">Select Category</option>
+        </select>
+        <span asp-validation-for="CategoryID" class="text-danger"></span>
+    </div>
+
     <br />
 
-    <label>Title:</label>
-    <input asp-for="Title" required />
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
     <br />
 
-    <label>Year:</label>
-    <input asp-for="Year" required />
+    <div>
+        <label asp-for="Year"></label>
+        <input asp-for="Year" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
     <br />
 
-    <label>Director:</label>
-    <input asp-for="Director" required />
+    <div>
+        <label asp-for="Director"></label>
+        <input asp-for="Director" />
+    </div>
+
     <br />
 
-    <label>Rating:</label>
-    <select asp-for="Rating" required>
-        <option value="">Select Rating</option>
-        <option>G</option>
-        <option>PG</option>
-        <option>PG-13</option>
-        <option>R</option>
-    </select>
+    <div>
+        <label asp-for="Rating"></label>
+        <select asp-for="Rating">
+            <option value="">Select Rating</option>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+    </div>
+
     <br />
 
-    <label>Edited:</label>
-    <select asp-for="Edited">
-        <option value="">Select</option>
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-    </select>
+    <div>
+        <label asp-for="Edited"></label>
+        <input asp-for="Edited" type="checkbox" />
+    </div>
+
     <br />
 
-    <label>Lent To:</label>
-    <input asp-for="LentTo" />
+    <div>
+        <label asp-for="CopiedToPlex"></label>
+        <input asp-for="CopiedToPlex" type="checkbox" />
+    </div>
+
     <br />
 
-    <label>Notes (max 25 characters):</label>
-    <input asp-for="Notes" maxlength="25" />
+    <div>
+        <label asp-for="LentTo"></label>
+        <input asp-for="LentTo" />
+    </div>
+
+    <br />
+
+    <div>
+        <label asp-for="Notes"></label>
+        <input asp-for="Notes" maxlength="25" />
+    </div>
+
     <br />
 
     <button type="submit">Save Movie</button>

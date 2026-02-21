@@ -23,8 +23,10 @@ namespace Mission06_Richards.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
 
@@ -38,6 +40,7 @@ namespace Mission06_Richards.Controllers
                 return RedirectToAction("Table");
             }
 
+            ViewBag.Categories = _context.Categories.ToList();
             return View(movie);
         }
         [HttpGet]
